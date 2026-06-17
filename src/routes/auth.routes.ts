@@ -1,7 +1,9 @@
 import {Router} from 'express'
+import * as authController from '../controllers/auth.controllers'
+ import {privateRoute} from '../middlewares/private-route'
 
 export const authRoutes = Router()
 
-authRoutes.post('/signin', authcontroller.signIn)
+authRoutes.post('/signin', authController.signIn)
 authRoutes.post('/signup', authController.signUp)
-authRoutes.post('/signup', authController.validate)
+authRoutes.post('/validate', privateRoute, authController.validate)
